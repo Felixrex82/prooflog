@@ -43,7 +43,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
   const checkNetwork = useCallback(async () => {
     const eth = getEthereum();
     if (!eth) return;
-    const chainIdHex: string = await eth.request({ method: "eth_chainId" });
+    const chainIdHex = await eth.request({ method: "eth_chainId" }) as string;
     const chainId = parseInt(chainIdHex, 16);
     setIsWrongNetwork(chainId !== BASE_CHAIN_ID);
   }, []);
