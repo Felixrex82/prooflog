@@ -26,7 +26,7 @@ export async function connectWallet(): Promise<string> {
   const eth = getEthereum();
   if (!eth) throw new Error("MetaMask not detected. Please install MetaMask.");
 
-  const accounts: string[] = await eth.request({ method: "eth_requestAccounts" });
+  const accounts = await eth.request({ method: "eth_requestAccounts" }) as string[];
   if (!accounts || accounts.length === 0) throw new Error("No accounts found.");
 
   await ensureBaseNetwork();
@@ -37,7 +37,7 @@ export async function getConnectedAccount(): Promise<string | null> {
   const eth = getEthereum();
   if (!eth) return null;
   try {
-    const accounts: string[] = await eth.request({ method: "eth_accounts" });
+    const accounts = await eth.request({ method: "eth_accounts" }) as string[];         	
     return accounts?.[0] ?? null;
   } catch {
     return null;
@@ -48,7 +48,7 @@ export async function ensureBaseNetwork(): Promise<void> {
   const eth = getEthereum();
   if (!eth) throw new Error("MetaMask not detected.");
 
-  const chainIdHex: string = await eth.request({ method: "eth_chainId" });
+  const chainIdHex = await eth.request({ method: "eth_chainId" }) as string;
   const chainId = parseInt(chainIdHex, 16);
 
   if (chainId === BASE_CHAIN_ID) return;
