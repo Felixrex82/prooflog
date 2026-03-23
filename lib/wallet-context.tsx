@@ -60,9 +60,10 @@ export function WalletProvider({ children }: { children: ReactNode }) {
       }
     });
 
-    const handleAccountsChanged = (accounts: string[]) => {
-      setAddress(accounts[0] ?? null);
-    };
+    const handleAccountsChanged = (...args: unknown[]) => {
+  const accounts = args[0] as string[];
+  setAddress(accounts[0] ?? null);
+};
 
     const handleChainChanged = () => {
       checkNetwork();
