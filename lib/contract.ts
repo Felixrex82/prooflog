@@ -1,7 +1,7 @@
 // ─── Contract Configuration ───────────────────────────────────────────────────
 // Replace CONTRACT_ADDRESS with your deployed contract address on Base
 
-export const CONTRACT_ADDRESS = "0x0000000000000000000000000000000000000000"; // TODO: replace
+export const CONTRACT_ADDRESS = "0x53F61165f7E4b184883E33AD7B4DA21A05276069"; // TODO: replace
 
 export const CONTRACT_ABI = [
   {
